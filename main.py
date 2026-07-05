@@ -37,17 +37,46 @@ def length():
     "8 : Mile"+Fore.RESET)
 
 def weight():
-    pass
+    print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
+    "1 : Gram(gm)\n" \
+    "2 : Kilogram(kg)\n" \
+    "3 : Pound\n" \
+    "4 : Ounce\n" \
+    "5 : Ton\n"+Fore.RESET)
 def temperature():
-    pass
+    print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
+    "1 : Celcius(°C)\n" \
+    "2 : Farhenheit(°F)\n" \
+    "3 : Kelvin(K)"+Fore.RESET)
+
 def time():
-    pass
+    print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
+    "1 : Second\n" \
+    "2 : Minute\n" \
+    "3 : Hour\n" \
+    "4 : Day\n" \
+    "5 : Week"+Fore.RESET)
+        
 def speed():
-    pass
+    print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n"
+    "1 : m/s\n"
+    "2 : Km/h\n"
+    "3 : mph")
+
 def area():
-    pass
+    print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
+    "1 : m^2\n" \
+    "2 : Km^2\n" \
+    "3 : Hectare\n" \
+    "4 : Acre"+Fore.RESET)
+    
 def volume():
-    pass
+    print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
+    "1 : Liter(l)\n" \
+    "2 : Milliliter(ml)\n" \
+    "3 : Cubic meter(m^3)\n" \
+    "4 : Gallon"+Fore.RESET)
+    
 def choose_from_unit():
     valid_choices={1,2,3,4,5,6,7,8}
     while True:
