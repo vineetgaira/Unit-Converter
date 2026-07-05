@@ -101,10 +101,10 @@ def show_result():
         user_choice=user_input()
         if user_choice==1:
             length()
-            result=convert()
         elif user_choice==8:
             print(Fore.CYAN+"Thanks for using..."+Fore.RESET )
             break
+        result=convert()
         print(Fore.GREEN+f"After conversion :{result}"+Fore.RESET)
 
 if __name__=="__main__":
