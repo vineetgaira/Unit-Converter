@@ -8,13 +8,13 @@ def display_menu():
     "2 : Weight\n" \
     "3 : Temperature\n" \
     "4 : Time\n" \
-    "6 : Speed\n" \
-    "8 : Area\n" \
-    "9 : Volume\n"
-    "10 : Exit"+Fore.RESET)
+    "5 : Speed\n" \
+    "6 : Area\n" \
+    "7 : Volume\n"
+    "8 : Exit"+Fore.RESET)
 
 def user_input():
-    valid_choices={1,2,3,4,5,6,7,8,9}
+    valid_choices={1,2,3,4,5,6,7,8}
     while True:
         try:
             user_choice=int(input(Fore.LIGHTBLUE_EX+"Choose your category :"+Fore.RESET))
@@ -28,9 +28,9 @@ def user_input():
 def length():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
     "1 : Meter(m)\n" \
-    "2 : Kilomter(km)\n" \
+    "2 : Kilometer(km)\n" \
     "3 : Centimeter(cm)\n" \
-    "4 : Milimeter(mm)\n" \
+    "4 : Millimeter(mm)\n" \
     "5 : Inch\n" \
     "6 : Foot\n" \
     "7 : Yard\n" \
@@ -78,16 +78,16 @@ def convert():
     2: 1000,
     3: 0.01,
     4: 0.001,
-    5: 1609.34,
+    5: 0.0254,
     6: 0.3048,
-    7: 0.0254,
-    8: 0.9144
+    7: 0.9144,
+    8: 1609.34,
 }  
     from_unit=choose_from_unit()
     to_unit=choose_to_unit()
     while True:
         try:
-            user_value=int(input(Fore.LIGHTBLUE_EX+"Enter a value :"+Fore.RESET))
+            user_value=float(input(Fore.LIGHTBLUE_EX+"Enter a value :"+Fore.RESET))
             base_value=user_value * length_units[from_unit]
             result=base_value/length_units[to_unit]
             return result
