@@ -1,5 +1,5 @@
 import colorama 
-from colorama import Fore, Back, Style
+from colorama import Fore
 
 def display_menu():
     print(Fore.LIGHTGREEN_EX+"...Welcome to unit converter...\n" \
