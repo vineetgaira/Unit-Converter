@@ -1,6 +1,32 @@
 import colorama 
 from colorama import Fore
 
+LENGTH_UNITS = {
+    1: 1,
+    2: 1000,
+    3: 0.01,
+    4: 0.001,
+    5: 0.0254,
+    6: 0.3048,
+    7: 0.9144,
+    8: 1609.34,
+}  
+
+WEIGHT_UNITS={
+    1: 1,
+    2: 1000,
+    3: 453.59,
+    4: 28.35,
+    5: 907184.74
+}
+
+TIME_UNITS={}
+SPEED_UNITS={}
+AREA_UNITS={}
+VOLUME_UNITS={}
+TEMPERATURE_UNITS={}
+
+
 def display_menu():
     print(Fore.LIGHTGREEN_EX+"...Welcome to unit converter...\n" \
     "Choose category:\n" \
@@ -38,36 +64,6 @@ def length():
     "7 : Yard\n" \
     "8 : Mile"+Fore.RESET)
 
-    length_units = {
-    1: 1,
-    2: 1000,
-    3: 0.01,
-    4: 0.001,
-    5: 0.0254,
-    6: 0.3048,
-    7: 0.9144,
-    8: 1609.34,
-}  
-  
-   choice_length = { 
-    1 : "Meter(m)", 
-    2 : "Kilometer(km)", 
-    3 : "Centimeter(cm)", 
-    4 : "Millimeter(mm)",
-    5 : "Inch",
-    6 : "Foot",
-    7 : "Yard",
-    8 : "Mile"}
-     
-    
-
-
-
-  
-            
-
-
-
 def weight():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
     "1 : Gram(gm)\n" \
@@ -75,11 +71,7 @@ def weight():
     "3 : Pound\n" \
     "4 : Ounce\n" \
     "5 : Ton\n"+Fore.RESET)
-def temperature():
-    print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
-    "1 : Celcius(°C)\n" \
-    "2 : Farhenheit(°F)\n" \
-    "3 : Kelvin(K)"+Fore.RESET)
+
 
 def time():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
@@ -108,6 +100,12 @@ def volume():
     "2 : Milliliter(ml)\n" \
     "3 : Cubic meter(m^3)\n" \
     "4 : Gallon"+Fore.RESET)
+
+def temperature():
+    print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
+    "1 : Celcius(°C)\n" \
+    "2 : Farhenheit(°F)\n" \
+    "3 : Kelvin(K)"+Fore.RESET)
     
 def choose_from_unit():
     valid_choices={1,2,3,4,5,6,7,8}
