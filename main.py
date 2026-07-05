@@ -13,6 +13,8 @@ def display_menu():
     "7 : Volume\n"
     "8 : Exit"+Fore.RESET)
 
+
+
 def user_input():
     valid_choices={1,2,3,4,5,6,7,8}
     while True:
@@ -35,6 +37,36 @@ def length():
     "6 : Foot\n" \
     "7 : Yard\n" \
     "8 : Mile"+Fore.RESET)
+
+    length_units = {
+    1: 1,
+    2: 1000,
+    3: 0.01,
+    4: 0.001,
+    5: 0.0254,
+    6: 0.3048,
+    7: 0.9144,
+    8: 1609.34,
+}  
+  
+   choice_length = { 
+    1 : "Meter(m)", 
+    2 : "Kilometer(km)", 
+    3 : "Centimeter(cm)", 
+    4 : "Millimeter(mm)",
+    5 : "Inch",
+    6 : "Foot",
+    7 : "Yard",
+    8 : "Mile"}
+     
+    
+
+
+
+  
+            
+
+
 
 def weight():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
@@ -102,27 +134,7 @@ def choose_to_unit():
             print(Fore.RED+"Please enter a valid integer option."+Fore.RESET)    
 
 def convert():
-    length_units = {
-    1: 1,
-    2: 1000,
-    3: 0.01,
-    4: 0.001,
-    5: 0.0254,
-    6: 0.3048,
-    7: 0.9144,
-    8: 1609.34,
-}  
-    from_unit=choose_from_unit()
-    to_unit=choose_to_unit()
-    while True:
-        try:
-            user_value=float(input(Fore.LIGHTBLUE_EX+"Enter a value :"+Fore.RESET))
-            base_value=user_value * length_units[from_unit]
-            result=base_value/length_units[to_unit]
-            return result
-        except ValueError:
-            print(Fore.RED+"Please enter a valid integer option."+Fore.RESET)  
-            
+    pass
             
 def show_result():
     while True:
