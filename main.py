@@ -96,12 +96,16 @@ def convert():
             
             
 def show_result():
-    display_menu()
-    user_choice=user_input()
-    if user_choice==1:
-        length()
-        result=convert()
-    print(Fore.GREEN+f"After conversion :{result}"+Fore.RESET)
+    while True:
+        display_menu()
+        user_choice=user_input()
+        if user_choice==1:
+            length()
+            result=convert()
+        elif user_choice==8:
+            print(Fore.CYAN+"Thanks for using..."+Fore.RESET )
+            break
+        print(Fore.GREEN+f"After conversion :{result}"+Fore.RESET)
 
 if __name__=="__main__":
     show_result()
