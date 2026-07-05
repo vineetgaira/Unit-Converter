@@ -13,7 +13,7 @@ def display_menu():
     "9 : Volume\n"
     "10 : Exit"+Fore.RESET)
 
-def user_choice():
+def user_input():
     valid_choices={1,2,3,4,5,6,7,8,9}
     while True:
         try:
@@ -50,4 +50,3 @@ def convert():
 def show_result():
     pass
 
-user_choice()
