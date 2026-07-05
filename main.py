@@ -20,12 +20,86 @@ WEIGHT_UNITS={
     5: 907184.74
 }
 
-TIME_UNITS={}
-SPEED_UNITS={}
-AREA_UNITS={}
-VOLUME_UNITS={}
-TEMPERATURE_UNITS={}
+TIME_UNITS={
+    1: 1,
+    2: 60,
+    3: 3600,
+    4: 86400,
+    5: 604800
+}
 
+SPEED_UNITS={
+    1: 1,
+    2: 3.6,
+    3: 2.23694
+}
+
+AREA_UNITS={
+    1: 1,
+    2: 1000000,
+    3: 0.0001,
+    4: 0.000247105
+}
+            
+VOLUME_UNITS={
+    1: 1,
+    2: 1000,
+    3: 1000000,
+    4: 3785.41
+}
+
+UNIT_NAMES = {
+    "length": {
+        1: "Meter",
+        2: "Kilometer",
+        3: "Centimeter",
+        4: "Millimeter",
+        5: "Inch",
+        6: "Foot",
+        7: "Yard",
+        8: "Mile"
+    },
+
+    "weight": {
+        1: "Gram",
+        2: "Kilogram",
+        3: "Milligram",
+        4: "Pound",
+        5: "Ounce"
+    },
+
+    "time": {
+        1: "Second",
+        2: "Minute",
+        3: "Hour",
+        4: "Day"
+    },
+
+    "speed": {
+        1: "m/s",
+        2: "Km/h",
+        3: "mph"
+    },
+
+    "area": {
+        1: "Square meter",
+        2: "Square Kilometer",
+        3: "Hectare",
+        4: "Acre"
+    },
+    "volume": {
+        1: "Milliliter",
+        2: "Liter",
+        3: "Cubic meter",
+        4: "Gallon"
+    },
+    "temperature": {
+        1 : "Celcius(°C)",
+        2 : "Farhenheit(°F)",
+        3 : "Kelvin(K)"
+    }
+
+}
 
 def display_menu():
     print(Fore.LIGHTGREEN_EX+"...Welcome to unit converter...\n" \
@@ -38,8 +112,6 @@ def display_menu():
     "6 : Area\n" \
     "7 : Volume\n"
     "8 : Exit"+Fore.RESET)
-
-
 
 def user_input():
     valid_choices={1,2,3,4,5,6,7,8}
@@ -66,7 +138,7 @@ def length():
 
 def weight():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
-    "1 : Gram(gm)\n" \
+    "1 : Gram(g)\n" \
     "2 : Kilogram(kg)\n" \
     "3 : Pound\n" \
     "4 : Ounce\n" \
@@ -89,15 +161,15 @@ def speed():
 
 def area():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
-    "1 : m^2\n" \
-    "2 : Km^2\n" \
+    "1 : Square meter\n" \
+    "2 : Square Kilometer\n" 
     "3 : Hectare\n" \
     "4 : Acre"+Fore.RESET)
     
 def volume():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
-    "1 : Liter(l)\n" \
-    "2 : Milliliter(ml)\n" \
+    "1 : Milliliter(ml)\n" \
+    "2 : Liter(l)\n" \
     "3 : Cubic meter(m^3)\n" \
     "4 : Gallon"+Fore.RESET)
 
