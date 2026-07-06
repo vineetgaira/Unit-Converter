@@ -1,5 +1,6 @@
 import colorama 
 from colorama import Fore
+colorama.init(autoreset=True)
 
 LENGTH_UNITS = {
     1: 1,
@@ -102,6 +103,15 @@ UNIT_NAMES = {
 
 }
 
+UNITS = {
+    1: LENGTH_UNITS,
+    2: WEIGHT_UNITS,
+    3: TIME_UNITS,
+    4: SPEED_UNITS,
+    5: AREA_UNITS,
+    6: VOLUME_UNITS
+}
+
 def display_menu():
     print(Fore.LIGHTGREEN_EX+"...Welcome to unit converter...\n" \
     "Choose category:\n" \
@@ -111,19 +121,19 @@ def display_menu():
     "4 : Speed\n" \
     "5 : Area\n" \
     "6 : Volume\n"
-    "7 : Temperature"+Fore.RESET)
+    "7 : Temperature")
 
 def user_input():
     valid_choices={1,2,3,4,5,6,7}
     while True:
         try:
-            category=int(input(Fore.LIGHTBLUE_EX+"Choose your category :"+Fore.RESET))
+            category=int(input(Fore.LIGHTBLUE_EX+"Choose your category :"))
             if category in valid_choices:
                 return category
             else:
-                print(Fore.RED+"Please enter a valid category from the menu."+Fore.RESET)
+                print(Fore.RED+"Please enter a valid category from the menu.")
         except ValueError:
-            print(Fore.RED+"Please enter a valid integer option."+Fore.RESET)    
+            print(Fore.RED+"Please enter a valid integer option.")    
 
 def length():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
@@ -134,7 +144,7 @@ def length():
     "5 : Inch\n" \
     "6 : Foot\n" \
     "7 : Yard\n" \
-    "8 : Mile"+Fore.RESET)
+    "8 : Mile")
 
 def weight():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
@@ -142,7 +152,7 @@ def weight():
     "2 : Kilogram(kg)\n" \
     "3 : Pound\n" \
     "4 : Ounce\n" \
-    "5 : Ton\n"+Fore.RESET)
+    "5 : Ton\n")
 
 def time():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
@@ -150,7 +160,7 @@ def time():
     "2 : Minute\n" \
     "3 : Hour\n" \
     "4 : Day\n" \
-    "5 : Week"+Fore.RESET)
+    "5 : Week")
         
 def speed():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n"
@@ -163,101 +173,106 @@ def area():
     "1 : Square meter\n" \
     "2 : Square Kilometer\n" 
     "3 : Hectare\n" \
-    "4 : Acre"+Fore.RESET)
+    "4 : Acre")
     
 def volume():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
     "1 : Milliliter(ml)\n" \
     "2 : Liter(l)\n" \
     "3 : Cubic meter(m^3)\n" \
-    "4 : Gallon"+Fore.RESET)
+    "4 : Gallon")
 
 def temperature():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
     "1 : Celcius(°C)\n" \
     "2 : Farhenheit(°F)\n" \
-    "3 : Kelvin(K)"+Fore.RESET)
+    "3 : Kelvin(K)")
     
-def choose_from_unit():
-    
-    valid_choices={1,2,3,4,5,6,7,8}
+def choose_from_unit(max_option):
+
+    valid_choices=set(range(1, max_option+1))
     while True:
         try:
-            user_from_unit_choice=int(input(Fore.LIGHTBLUE_EX+"From unit :"+Fore.RESET))
+            user_from_unit_choice=int(input(Fore.LIGHTBLUE_EX+"From unit :"))
             if user_from_unit_choice in valid_choices:
                 return user_from_unit_choice
             else:
-                print(Fore.RED+"Please enter a valid option from the menu."+Fore.RESET)
+                print(Fore.RED+"Please enter a valid option from the menu.")
         except ValueError:
-            print(Fore.RED+"Please enter a valid integer option."+Fore.RESET)    
+            print(Fore.RED+"Please enter a valid integer option.")    
 
-def choose_to_unit():
-
-    valid_choices={1,2,3,4,5,6,7,8}
+def choose_to_unit(max_option):
+    valid_choices=set(range(1, max_option+1))
     while True:
         try:
-            user_to_unit_choice=int(input(Fore.LIGHTBLUE_EX+"To unit :"+Fore.RESET))
+            user_to_unit_choice=int(input(Fore.LIGHTBLUE_EX+"To unit :"))
             if user_to_unit_choice in valid_choices:
                 return user_to_unit_choice
             else:
-                print(Fore.RED+"Please enter a valid option from the menu."+Fore.RESET)
+                print(Fore.RED+"Please enter a valid option from the menu.")
         except ValueError:
-            print(Fore.RED+"Please enter a valid integer option."+Fore.RESET)  
+            print(Fore.RED+"Please enter a valid integer option.")  
 
 def convert_temperature(from_unit,to_unit,value):
-
+    
     if from_unit==to_unit:
         result == value
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==1 and to_unit==2:
         result=(value*9/5)+32
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==1 and to_unit==3:
         result=(value)+273.15
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==2 and to_unit==1:
         result=(value-32)*5/9
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==2 and to_unit==3:
         result=(value-32)*5/9+273.15
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==3 and to_unit==1:
         result=value-273.15
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==3 and to_unit==2:
         result=(value-273.15)*9/5+32
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     return result
 
 def convert(category):
 
-    from_unit=choose_from_unit()
+    while True:
+        try:
+            value=float(input(Fore.LIGHTBLUE_EX+"Enter a value :"))
+            break
+        except ValueError:
+            print(Fore.RED+"Please enter a valid value.")
     to_unit=choose_to_unit()
-    value=float(input(Fore.LIGHTBLUE_EX+"Enter a value :"+Fore.RESET))
+    from_unit=choose_from_unit()
+
     if category==1:
         base_value=value*LENGTH_UNITS[from_unit]
         result=base_value/LENGTH_UNITS[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["length"][from_unit]}: {result} {UNIT_NAMES["length"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["length"][from_unit]}: {result} {UNIT_NAMES["length"][to_unit]}")
     elif category==2:
-            base_value=value*WEIGHT_UNITS[from_unit]
-            result=base_value/WEIGHT_UNITS[to_unit]
-            print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["weight"][from_unit]}: {result} {UNIT_NAMES["weight"][to_unit]}"+Fore.RESET)
+        base_value=value*WEIGHT_UNITS[from_unit]
+        result=base_value/WEIGHT_UNITS[to_unit]
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["weight"][from_unit]}: {result} {UNIT_NAMES["weight"][to_unit]}")
     elif category==3:
         base_value=value*TIME_UNITS[from_unit]
         result=base_value/TIME_UNITS[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["time"][from_unit]}: {result} {UNIT_NAMES["time"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["time"][from_unit]}: {result} {UNIT_NAMES["time"][to_unit]}")
     elif category==4:
         base_value = value * SPEED_UNITS[from_unit]
         result = base_value / SPEED_UNITS[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["speed"][from_unit]}: {result} {UNIT_NAMES["speed"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["speed"][from_unit]}: {result} {UNIT_NAMES["speed"][to_unit]}")
     elif category==5:
         base_value=value*AREA_UNITS[from_unit]
         result=base_value/AREA_UNITS[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["area"][from_unit]}: {result} {UNIT_NAMES["area"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["area"][from_unit]}: {result} {UNIT_NAMES["area"][to_unit]}")
     elif category==6:
         base_value=value*VOLUME_UNITS[from_unit]
         result=base_value/VOLUME_UNITS[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["volume"][from_unit]}: {result} {UNIT_NAMES["volume"][to_unit]}"+Fore.RESET)
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["volume"][from_unit]}: {result} {UNIT_NAMES["volume"][to_unit]}")
     elif category==7:
         result=convert_temperature(from_unit,to_unit,value)
     return result
@@ -280,18 +295,18 @@ def show_result():
             volume()
         elif category==7:
             temperature()
-        result=convert(category)
-        exit_option=input(Fore.LIGHTGREEN_EX+"Convert one more value(y/n):"+Fore.RESET)
+        convert(category)
+        exit_option=input(Fore.LIGHTGREEN_EX+"Convert one more value(y/n):")
         try:
             if exit_option.lower()=="n":
-                print(Fore.GREEN+"Thanks for using...."+Fore.RESET)
+                print(Fore.GREEN+"Thanks for using....")
                 break
             elif exit_option.lower()=="y":
                 continue
             else:
-                print(Fore.RED+"Please enter y/n."+Fore.RESET)
+                print(Fore.RED+"Please enter y/n.")
         except ValueError:
-            print(Fore.RED+"Please enter y/n."+Fore.RESET)
+            print(Fore.RED+"Please enter y/n.")
 
 if __name__=="__main__":
     show_result()
