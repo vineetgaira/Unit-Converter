@@ -76,7 +76,7 @@ def convert(category,from_unit,to_unit):
             print(Fore.RED+"Please enter a valid value.")
 
     if category==7:
-        result=convert_temperature(from_unit,to_unit,value)
+        return convert_temperature(from_unit,to_unit,value)
 
     units=UNITS[category]
 
