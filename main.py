@@ -238,7 +238,7 @@ def convert_temperature(from_unit,to_unit,value):
         print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     return result
 
-def convert(category):
+def convert(category,from_unit,to_unit):
 
     while True:
         try:
@@ -246,8 +246,6 @@ def convert(category):
             break
         except ValueError:
             print(Fore.RED+"Please enter a valid value.")
-    to_unit=choose_to_unit()
-    from_unit=choose_from_unit()
 
     if category==1:
         base_value=value*LENGTH_UNITS[from_unit]
@@ -283,19 +281,28 @@ def show_result():
         category=user_input()
         if category==1:
             length()
+            max_option=8
         elif category==2:
             weight()
+            max_option=5
         elif category==3:
             time()
+            max_option=5
         elif category==4:
             speed()
+            max_option=3
         elif category==5:
             area()
+            max_option=4
         elif category==6:
             volume()
+            max_option=4
         elif category==7:
             temperature()
-        convert(category)
+            max_option=3
+        from_unit=choose_from_unit(max_option)
+        to_unit=choose_to_unit(max_option)
+        convert(category,from_unit,to_unit)
         exit_option=input(Fore.LIGHTGREEN_EX+"Convert one more value(y/n):")
         try:
             if exit_option.lower()=="n":
