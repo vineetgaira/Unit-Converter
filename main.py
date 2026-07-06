@@ -50,7 +50,7 @@ VOLUME_UNITS={
 }
 
 UNIT_NAMES = {
-    "length": {
+    1: {
         1: "Meter",
         2: "Kilometer",
         3: "Centimeter",
@@ -61,7 +61,7 @@ UNIT_NAMES = {
         8: "Mile"
     },
 
-    "weight": {
+    2: {
         1: "Gram",
         2: "Kilogram",
         3: "Pound",
@@ -69,7 +69,7 @@ UNIT_NAMES = {
         5: "Ton"
     },
 
-    "time": {
+    3: {
         1: "Second",
         2: "Minute",
         3: "Hour",
@@ -77,25 +77,25 @@ UNIT_NAMES = {
         5: "Week"
     },
 
-    "speed": {
+    4: {
         1: "m/s",
         2: "Km/h",
         3: "mph"
     },
 
-    "area": {
+    5: {
         1: "Square meter",
         2: "Square Kilometer",
         3: "Hectare",
         4: "Acre"
     },
-    "volume": {
+    6: {
         1: "Milliliter",
         2: "Liter",
         3: "Cubic meter",
         4: "Gallon"
     },
-    "temperature": {
+    7: {
         1 : "Celcius(°C)",
         2 : "Farhenheit(°F)",
         3 : "Kelvin(K)"
@@ -213,29 +213,29 @@ def choose_to_unit(max_option):
         except ValueError:
             print(Fore.RED+"Please enter a valid integer option.")  
 
-def convert_temperature(from_unit,to_unit,value):
+def convert_temperature(from_unit,to_unit,value,category):
     
     if from_unit==to_unit:
         result == value
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
     elif from_unit==1 and to_unit==2:
         result=(value*9/5)+32
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
     elif from_unit==1 and to_unit==3:
         result=(value)+273.15
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
     elif from_unit==2 and to_unit==1:
         result=(value-32)*5/9
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
     elif from_unit==2 and to_unit==3:
         result=(value-32)*5/9+273.15
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
     elif from_unit==3 and to_unit==1:
         result=value-273.15
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
     elif from_unit==3 and to_unit==2:
         result=(value-273.15)*9/5+32
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
     return result
 
 def convert(category,from_unit,to_unit):
@@ -247,32 +247,13 @@ def convert(category,from_unit,to_unit):
         except ValueError:
             print(Fore.RED+"Please enter a valid value.")
 
-    if category==1:
-        base_value=value*LENGTH_UNITS[from_unit]
-        result=base_value/LENGTH_UNITS[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["length"][from_unit]}: {result} {UNIT_NAMES["length"][to_unit]}")
-    elif category==2:
-        base_value=value*WEIGHT_UNITS[from_unit]
-        result=base_value/WEIGHT_UNITS[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["weight"][from_unit]}: {result} {UNIT_NAMES["weight"][to_unit]}")
-    elif category==3:
-        base_value=value*TIME_UNITS[from_unit]
-        result=base_value/TIME_UNITS[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["time"][from_unit]}: {result} {UNIT_NAMES["time"][to_unit]}")
-    elif category==4:
-        base_value = value * SPEED_UNITS[from_unit]
-        result = base_value / SPEED_UNITS[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["speed"][from_unit]}: {result} {UNIT_NAMES["speed"][to_unit]}")
-    elif category==5:
-        base_value=value*AREA_UNITS[from_unit]
-        result=base_value/AREA_UNITS[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["area"][from_unit]}: {result} {UNIT_NAMES["area"][to_unit]}")
-    elif category==6:
-        base_value=value*VOLUME_UNITS[from_unit]
-        result=base_value/VOLUME_UNITS[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["volume"][from_unit]}: {result} {UNIT_NAMES["volume"][to_unit]}")
-    elif category==7:
-        result=convert_temperature(from_unit,to_unit,value)
+    units=UNITS[category]
+    base_value=value*units[from_unit]
+    result=base_value/units[to_unit]
+    print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
+
+    if category==7:
+        result=convert_temperature(from_unit,to_unit,value,category)
     return result
               
 def show_result():
