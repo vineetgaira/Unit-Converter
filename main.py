@@ -44,7 +44,7 @@ def choose_to_unit(max_option):
 def convert_temperature(from_unit,to_unit,value):
     
     if from_unit==to_unit:
-        result == value
+        result = value
         print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==1 and to_unit==2:
         result=(value*9/5)+32
