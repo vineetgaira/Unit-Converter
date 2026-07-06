@@ -203,7 +203,10 @@ def choose_to_unit():
             print(Fore.RED+"Please enter a valid integer option."+Fore.RESET)  
 
 def convert_temperature(from_unit,to_unit,user_value):
-    if from_unit==1 and to_unit==2:
+    if from_unit==to_unit:
+        result == user_value
+        print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+    elif from_unit==1 and to_unit==2:
         result=(user_value*9/5)+32
         print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
     elif from_unit==1 and to_unit==3:
