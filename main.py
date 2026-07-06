@@ -95,7 +95,7 @@ UNIT_NAMES = {
         3: "Cubic meter",
         4: "Gallon"
     },
-    7: {
+    "temperature": {
         1 : "Celcius(°C)",
         2 : "Farhenheit(°F)",
         3 : "Kelvin(K)"
@@ -213,29 +213,29 @@ def choose_to_unit(max_option):
         except ValueError:
             print(Fore.RED+"Please enter a valid integer option.")  
 
-def convert_temperature(from_unit,to_unit,value,category):
+def convert_temperature(from_unit,to_unit,value):
     
     if from_unit==to_unit:
         result == value
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==1 and to_unit==2:
         result=(value*9/5)+32
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==1 and to_unit==3:
         result=(value)+273.15
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==2 and to_unit==1:
         result=(value-32)*5/9
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==2 and to_unit==3:
         result=(value-32)*5/9+273.15
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==3 and to_unit==1:
         result=value-273.15
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==3 and to_unit==2:
         result=(value-273.15)*9/5+32
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     return result
 
 def convert(category,from_unit,to_unit):
@@ -246,16 +246,15 @@ def convert(category,from_unit,to_unit):
             break
         except ValueError:
             print(Fore.RED+"Please enter a valid value.")
-
     units=UNITS[category]
-    base_value=value*units[from_unit]
-    result=base_value/units[to_unit]
-    print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
-
-    if category==7:
-        result=convert_temperature(from_unit,to_unit,value,category)
+    if category in UNITS:
+        base_value=value*units[from_unit]
+        result=base_value/units[to_unit]
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
+    else:
+        result=convert_temperature(from_unit,to_unit,value)
     return result
-              
+       
 def show_result():
     while True:
         display_menu()
@@ -284,17 +283,17 @@ def show_result():
         from_unit=choose_from_unit(max_option)
         to_unit=choose_to_unit(max_option)
         convert(category,from_unit,to_unit)
-        exit_option=input(Fore.LIGHTGREEN_EX+"Convert one more value(y/n):")
-        try:
-            if exit_option.lower()=="n":
-                print(Fore.GREEN+"Thanks for using....")
+        while True:
+            exit_option=input(Fore.LIGHTGREEN_EX+"Convert one more value(y/n):").lower()
+            if exit_option=="y":
                 break
-            elif exit_option.lower()=="y":
-                continue
+            elif exit_option.lower()=="n":
+                print(Fore.GREEN+"Thanks for using....")
+                return
             else:
                 print(Fore.RED+"Please enter y/n.")
-        except ValueError:
-            print(Fore.RED+"Please enter y/n.")
+                continue
+            
 
 if __name__=="__main__":
     show_result()
