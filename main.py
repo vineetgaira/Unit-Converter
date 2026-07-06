@@ -2,7 +2,19 @@ import colorama
 from colorama import Fore
 colorama.init(autoreset=True)
 from constants import UNITS,UNIT_NAMES
-from menu_functions import display_menu,user_input,length,weight,time,speed,area,volume,temperature
+from menu_functions import display_menu,length,weight,time,speed,area,volume,temperature
+
+def user_input():
+    valid_choices={1,2,3,4,5,6,7}
+    while True:
+        try:
+            category=int(input(Fore.LIGHTBLUE_EX+"Choose your category :"))
+            if category in valid_choices:
+                return category
+            else:
+                print(Fore.RED+"Please enter a valid category from the menu.")
+        except ValueError:
+            print(Fore.RED+"Please enter a valid integer option.")    
     
 def choose_from_unit(max_option):
 

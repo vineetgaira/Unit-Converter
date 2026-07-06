@@ -13,17 +13,6 @@ def display_menu():
     "6 : Volume\n"
     "7 : Temperature")
 
-def user_input():
-    valid_choices={1,2,3,4,5,6,7}
-    while True:
-        try:
-            category=int(input(Fore.LIGHTBLUE_EX+"Choose your category :"))
-            if category in valid_choices:
-                return category
-            else:
-                print(Fore.RED+"Please enter a valid category from the menu.")
-        except ValueError:
-            print(Fore.RED+"Please enter a valid integer option.")    
 
 def length():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
