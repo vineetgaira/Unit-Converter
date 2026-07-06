@@ -212,7 +212,7 @@ def convert_temperature(from_unit,to_unit,user_value):
     elif from_unit==2 and to_unit==1:
         result=(user_value-32)*5/9
         print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
-    elif from_unit==2 and to_unit==1:
+    elif from_unit==2 and to_unit==3:
         result=(user_value-32)*5/9+273.15
         print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
     elif from_unit==3 and to_unit==1:
@@ -241,8 +241,8 @@ def convert(user_choice):
             result=base_value/TIME_UNITS[to_unit]
             print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["time"][from_unit]}: {result} {UNIT_NAMES["time"][to_unit]}"+Fore.RESET)
         elif user_choice==4:
-            base_value=user_value*SPEED_UNITS[from_unit]
-            result=base_value*SPEED_UNITS[to_unit]
+            base_value = user_value * SPEED_UNITS[from_unit]
+            result = base_value / SPEED_UNITS[to_unit]
             print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["speed"][from_unit]}: {result} {UNIT_NAMES["speed"][to_unit]}"+Fore.RESET)
         elif user_choice==5:
             base_value=user_value*AREA_UNITS[from_unit]
