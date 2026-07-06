@@ -114,12 +114,12 @@ def display_menu():
     "7 : Temperature"+Fore.RESET)
 
 def user_input():
-    valid_choices={1,2,3,4,5,6,7,8}
+    valid_choices={1,2,3,4,5,6,7}
     while True:
         try:
-            user_choice=int(input(Fore.LIGHTBLUE_EX+"Choose your category :"+Fore.RESET))
-            if user_choice in valid_choices:
-                return user_choice
+            category=int(input(Fore.LIGHTBLUE_EX+"Choose your category :"+Fore.RESET))
+            if category in valid_choices:
+                return category
             else:
                 print(Fore.RED+"Please enter a valid category from the menu."+Fore.RESET)
         except ValueError:
@@ -179,6 +179,7 @@ def temperature():
     "3 : Kelvin(K)"+Fore.RESET)
     
 def choose_from_unit():
+    
     valid_choices={1,2,3,4,5,6,7,8}
     while True:
         try:
@@ -191,6 +192,7 @@ def choose_from_unit():
             print(Fore.RED+"Please enter a valid integer option."+Fore.RESET)    
 
 def choose_to_unit():
+
     valid_choices={1,2,3,4,5,6,7,8}
     while True:
         try:
@@ -202,82 +204,83 @@ def choose_to_unit():
         except ValueError:
             print(Fore.RED+"Please enter a valid integer option."+Fore.RESET)  
 
-def convert_temperature(from_unit,to_unit,user_value):
+def convert_temperature(from_unit,to_unit,value):
+
     if from_unit==to_unit:
-        result == user_value
-        print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        result == value
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
     elif from_unit==1 and to_unit==2:
-        result=(user_value*9/5)+32
-        print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        result=(value*9/5)+32
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
     elif from_unit==1 and to_unit==3:
-        result=(user_value)+273.15
-        print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        result=(value)+273.15
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
     elif from_unit==2 and to_unit==1:
-        result=(user_value-32)*5/9
-        print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        result=(value-32)*5/9
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
     elif from_unit==2 and to_unit==3:
-        result=(user_value-32)*5/9+273.15
-        print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        result=(value-32)*5/9+273.15
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
     elif from_unit==3 and to_unit==1:
-        result=user_value-273.15
-        print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        result=value-273.15
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
     elif from_unit==3 and to_unit==2:
-        result=(user_value-273.15)*9/5+32
-        print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
+        result=(value-273.15)*9/5+32
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}"+Fore.RESET)
     return result
 
-def convert(user_choice):
-    while True:
-        from_unit=choose_from_unit()
-        to_unit=choose_to_unit()
-        user_value=float(input(Fore.LIGHTBLUE_EX+"Enter a value :"+Fore.RESET))
-        if user_choice==1:
-            base_value=user_value*LENGTH_UNITS[from_unit]
-            result=base_value/LENGTH_UNITS[to_unit]
-            print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["length"][from_unit]}: {result} {UNIT_NAMES["length"][to_unit]}"+Fore.RESET)
-        elif user_choice==2:
-            base_value=user_value*WEIGHT_UNITS[from_unit]
+def convert(category):
+
+    from_unit=choose_from_unit()
+    to_unit=choose_to_unit()
+    value=float(input(Fore.LIGHTBLUE_EX+"Enter a value :"+Fore.RESET))
+    if category==1:
+        base_value=value*LENGTH_UNITS[from_unit]
+        result=base_value/LENGTH_UNITS[to_unit]
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["length"][from_unit]}: {result} {UNIT_NAMES["length"][to_unit]}"+Fore.RESET)
+    elif category==2:
+            base_value=value*WEIGHT_UNITS[from_unit]
             result=base_value/WEIGHT_UNITS[to_unit]
-            print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["length"][from_unit]}: {result} {UNIT_NAMES["length"][to_unit]}"+Fore.RESET)
-        elif user_choice==3:
-            base_value=user_value*TIME_UNITS[from_unit]
-            result=base_value/TIME_UNITS[to_unit]
-            print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["time"][from_unit]}: {result} {UNIT_NAMES["time"][to_unit]}"+Fore.RESET)
-        elif user_choice==4:
-            base_value = user_value * SPEED_UNITS[from_unit]
-            result = base_value / SPEED_UNITS[to_unit]
-            print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["speed"][from_unit]}: {result} {UNIT_NAMES["speed"][to_unit]}"+Fore.RESET)
-        elif user_choice==5:
-            base_value=user_value*AREA_UNITS[from_unit]
-            result=base_value/AREA_UNITS[to_unit]
-            print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["area"][from_unit]}: {result} {UNIT_NAMES["area"][to_unit]}"+Fore.RESET)
-        elif user_choice==6:
-            base_value=user_value*VOLUME_UNITS[from_unit]
-            result=base_value/VOLUME_UNITS[to_unit]
-            print(Fore.LIGHTCYAN_EX+f"{user_value} {UNIT_NAMES["volume"][from_unit]}: {result} {UNIT_NAMES["volume"][to_unit]}"+Fore.RESET)
-        elif user_choice==7:
-            result=convert_temperature(from_unit,to_unit,user_value)
-        return result
+            print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["weight"][from_unit]}: {result} {UNIT_NAMES["weight"][to_unit]}"+Fore.RESET)
+    elif category==3:
+        base_value=value*TIME_UNITS[from_unit]
+        result=base_value/TIME_UNITS[to_unit]
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["time"][from_unit]}: {result} {UNIT_NAMES["time"][to_unit]}"+Fore.RESET)
+    elif category==4:
+        base_value = value * SPEED_UNITS[from_unit]
+        result = base_value / SPEED_UNITS[to_unit]
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["speed"][from_unit]}: {result} {UNIT_NAMES["speed"][to_unit]}"+Fore.RESET)
+    elif category==5:
+        base_value=value*AREA_UNITS[from_unit]
+        result=base_value/AREA_UNITS[to_unit]
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["area"][from_unit]}: {result} {UNIT_NAMES["area"][to_unit]}"+Fore.RESET)
+    elif category==6:
+        base_value=value*VOLUME_UNITS[from_unit]
+        result=base_value/VOLUME_UNITS[to_unit]
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["volume"][from_unit]}: {result} {UNIT_NAMES["volume"][to_unit]}"+Fore.RESET)
+    elif category==7:
+        result=convert_temperature(from_unit,to_unit,value)
+    return result
               
 def show_result():
     while True:
         display_menu()
-        user_choice=user_input()
-        if user_choice==1:
+        category=user_input()
+        if category==1:
             length()
-        elif user_choice==2:
+        elif category==2:
             weight()
-        elif user_choice==3:
+        elif category==3:
             time()
-        elif user_choice==4:
+        elif category==4:
             speed()
-        elif user_choice==5:
+        elif category==5:
             area()
-        elif user_choice==6:
+        elif category==6:
             volume()
-        elif user_choice==7:
+        elif category==7:
             temperature()
-        result=convert(user_choice)
+        result=convert(category)
         exit_option=input(Fore.LIGHTGREEN_EX+"Convert one more value(y/n):"+Fore.RESET)
         try:
             if exit_option.lower()=="n":
