@@ -63,9 +63,9 @@ UNIT_NAMES = {
     "weight": {
         1: "Gram",
         2: "Kilogram",
-        3: "Milligram",
-        4: "Pound",
-        5: "Ounce"
+        3: "Pound",
+        4: "Ounce",
+        5: "Ton"
     },
 
     "time": {
