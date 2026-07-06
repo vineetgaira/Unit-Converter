@@ -72,7 +72,8 @@ UNIT_NAMES = {
         1: "Second",
         2: "Minute",
         3: "Hour",
-        4: "Day"
+        4: "Day",
+        5: "Week"
     },
 
     "speed": {
