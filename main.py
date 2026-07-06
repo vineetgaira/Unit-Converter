@@ -74,13 +74,16 @@ def convert(category,from_unit,to_unit):
             break
         except ValueError:
             print(Fore.RED+"Please enter a valid value.")
-    units=UNITS[category]
-    if category in UNITS:
-        base_value=value*units[from_unit]
-        result=base_value/units[to_unit]
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
-    else:
+
+    if category==7:
         result=convert_temperature(from_unit,to_unit,value)
+
+    units=UNITS[category]
+
+    base_value=value*units[from_unit]
+    result=base_value/units[to_unit]
+
+    print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
     return result
        
 def show_result():
@@ -122,6 +125,5 @@ def show_result():
                 print(Fore.RED+"Please enter y/n.")
                 continue
             
-
 if __name__=="__main__":
     show_result()
