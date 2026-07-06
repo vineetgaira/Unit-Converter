@@ -37,8 +37,8 @@ SPEED_UNITS={
 AREA_UNITS={
     1: 1,
     2: 1000000,
-    3: 0.0001,
-    4: 0.000247105
+    3: 10000,
+    4: 4046.86
 }
             
 VOLUME_UNITS={
@@ -106,12 +106,11 @@ def display_menu():
     "Choose category:\n" \
     "1 : Length\n" \
     "2 : Weight\n" \
-    "3 : Temperature\n" \
-    "4 : Time\n" \
-    "5 : Speed\n" \
-    "6 : Area\n" \
-    "7 : Volume\n"
-    "8 : Exit"+Fore.RESET)
+    "3 : Time\n" \
+    "4 : Speed\n" \
+    "5 : Area\n" \
+    "6 : Volume\n"
+    "7 : Temperature"+Fore.RESET)
 
 def user_input():
     valid_choices={1,2,3,4,5,6,7,8}
@@ -143,7 +142,6 @@ def weight():
     "3 : Pound\n" \
     "4 : Ounce\n" \
     "5 : Ton\n"+Fore.RESET)
-
 
 def time():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
@@ -203,20 +201,65 @@ def choose_to_unit():
         except ValueError:
             print(Fore.RED+"Please enter a valid integer option."+Fore.RESET)    
 
-def convert():
-    pass
-            
+def convert(user_choice):
+    while True:
+        from_unit=choose_from_unit()
+        to_unit=choose_to_unit()
+        user_value=float(input(Fore.LIGHTBLUE_EX+"Enter a value :"+Fore.RESET))
+        if user_choice==1:
+            base_value=user_value*LENGTH_UNITS[from_unit]
+            result=base_value/LENGTH_UNITS[to_unit]
+        elif user_choice==2:
+            base_value=user_value*WEIGHT_UNITS[from_unit]
+            result=base_value/WEIGHT_UNITS[to_unit]
+        elif user_choice==3:
+            base_value=user_value*TIME_UNITS[from_unit]
+            result=base_value/TIME_UNITS[to_unit]
+        elif user_choice==4:
+            base_value=user_value*SPEED_UNITS[from_unit]
+            result=base_value*SPEED_UNITS[to_unit]
+        elif user_choice==5:
+            base_value=user_value*AREA_UNITS[from_unit]
+            result=base_value/AREA_UNITS[to_unit]
+        elif user_choice==6:
+            base_value=user_value*VOLUME_UNITS[from_unit]
+            result=base_value/VOLUME_UNITS[to_unit]
+        elif user_choice==7:
+            pass
+        return result
+        
+              
 def show_result():
     while True:
         display_menu()
         user_choice=user_input()
         if user_choice==1:
             length()
-        elif user_choice==8:
-            print(Fore.CYAN+"Thanks for using..."+Fore.RESET )
-            break
-        result=convert()
+        elif user_choice==2:
+            weight()
+        elif user_choice==3:
+            time()
+        elif user_choice==4:
+            speed()
+        elif user_choice==5:
+            area()
+        elif user_choice==6:
+            volume()
+        elif user_choice==7:
+            temperature()
+        result=convert(user_choice)
         print(Fore.GREEN+f"After conversion :{result}"+Fore.RESET)
+        exit_option=input(Fore.LIGHTGREEN_EX+"Convert one more value(y/n):"+Fore.RESET)
+        try:
+            if exit_option.lower()=="n":
+                print(Fore.GREEN+"Thanks for using...."+Fore.RESET)
+                break
+            elif exit_option.lower()=="y":
+                continue
+            else:
+                print(Fore.RED+"Please enter y/n."+Fore.RESET)
+        except ValueError:
+            print(Fore.RED+"Please enter y/n."+Fore.RESET)
 
 if __name__=="__main__":
     show_result()
