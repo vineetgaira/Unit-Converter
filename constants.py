@@ -1,3 +1,15 @@
+from menu_functions import length,weight,time,speed,area,volume,temperature
+
+CATEGORY_INFO={
+    1: (length, 8),
+    2: (weight, 5),
+    3: (time, 5),
+    4: (speed, 3),
+    5: (area, 4),
+    6: (volume, 4),
+    7: (temperature, 3),
+
+}
 LENGTH_UNITS = {
     1: 1,
     2: 1000,

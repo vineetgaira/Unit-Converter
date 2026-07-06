@@ -1,7 +1,7 @@
 import colorama 
 from colorama import Fore
 colorama.init(autoreset=True)
-from constants import UNITS,UNIT_NAMES
+from constants import UNITS,UNIT_NAMES,CATEGORY_INFO
 from menu_functions import display_menu,length,weight,time,speed,area,volume,temperature
 
 def user_input():
@@ -45,25 +45,25 @@ def convert_temperature(from_unit,to_unit,value):
     
     if from_unit==to_unit:
         result = value
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result:.5f} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==1 and to_unit==2:
         result=(value*9/5)+32
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result:.5f} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==1 and to_unit==3:
         result=(value)+273.15
         print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==2 and to_unit==1:
         result=(value-32)*5/9
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result:.5f} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==2 and to_unit==3:
         result=(value-32)*5/9+273.15
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result:.5f} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==3 and to_unit==1:
         result=value-273.15
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result:.5f} {UNIT_NAMES["temperature"][to_unit]}")
     elif from_unit==3 and to_unit==2:
         result=(value-273.15)*9/5+32
-        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result} {UNIT_NAMES["temperature"][to_unit]}")
+        print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES["temperature"][from_unit]}: {result:.5f} {UNIT_NAMES["temperature"][to_unit]}")
     return result
 
 def convert(category,from_unit,to_unit):
@@ -83,34 +83,15 @@ def convert(category,from_unit,to_unit):
     base_value=value*units[from_unit]
     result=base_value/units[to_unit]
 
-    print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result} {UNIT_NAMES[category][to_unit]}")
+    print(Fore.LIGHTCYAN_EX+f"{value} {UNIT_NAMES[category][from_unit]}: {result:.5f} {UNIT_NAMES[category][to_unit]}")
     return result
        
 def show_result():
     while True:
         display_menu()
         category=user_input()
-        if category==1:
-            length()
-            max_option=8
-        elif category==2:
-            weight()
-            max_option=5
-        elif category==3:
-            time()
-            max_option=5
-        elif category==4:
-            speed()
-            max_option=3
-        elif category==5:
-            area()
-            max_option=4
-        elif category==6:
-            volume()
-            max_option=4
-        elif category==7:
-            temperature()
-            max_option=3
+        unit_options, max_option = CATEGORY_INFO[category]
+        unit_options()
         from_unit=choose_from_unit(max_option)
         to_unit=choose_to_unit(max_option)
         convert(category,from_unit,to_unit)
@@ -127,3 +108,4 @@ def show_result():
             
 if __name__=="__main__":
     show_result()
+

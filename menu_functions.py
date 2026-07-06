@@ -31,7 +31,7 @@ def weight():
     "2 : Kilogram(kg)\n" \
     "3 : Pound\n" \
     "4 : Ounce\n" \
-    "5 : Ton\n")
+    "5 : Ton")
 
 def time():
     print(Fore.LIGHTYELLOW_EX+"..Unit Options..\n" \
