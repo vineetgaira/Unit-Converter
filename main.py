@@ -99,7 +99,7 @@ def show_result():
             exit_option=input(Fore.LIGHTGREEN_EX+"Convert one more value(y/n):").lower()
             if exit_option=="y":
                 break
-            elif exit_option.lower()=="n":
+            elif exit_option=="n":
                 print(Fore.GREEN+"Thanks for using....")
                 return
             else:
